@@ -1,9 +1,8 @@
-图片合成插件
 
-// canvas图片合并类
+ ### canvas图片合并类
 // 传入参数只有src是必填，其他都可以不填，定位默认0，0
 
-/*
+```js
   @width:Number //canvas宽度
   @height:Number //canvas高度
   @msg:object //合成文本
@@ -29,4 +28,4 @@ imgSynthesis.set({
     }).then((e)=>{
         this.resultBase = e;
     })
-*/
+```
