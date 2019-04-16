@@ -29,3 +29,42 @@ imgSynthesis.set({
         this.resultBase = e;
     })
 ```
+```js
+//vue 框架示例
+<template>
+    <div class="app">
+        <img :src="resultBase" class="result-img">
+    </div>
+</template>
+
+<script>
+    import imgSynthesis from 'img-synthesis';
+    export default {
+        data(){
+            return{
+                names:'1234',
+                resultBase:null
+            }
+        },
+        mounted(){
+            let ls =  new imgSynthesis();
+            ls.set({
+            'msg':{x:300,y:400,text:this.names},
+            'img':[{src:img}]
+            }).then((e)=>{
+                this.resultBase = e;
+            })
+        },
+    };
+   let img ='data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAKAAD/4QNlaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0NSA3OS4xNjM0OTksIDIwMTgvMDgvMTMtMTY6NDA6MjIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkQyMjBCNkNCRkJDNjBFQzJEM0JCREZBRTczRTk3OENEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE4REU4NDhCNjAxRTExRTk5NEI5RUFCNDkzN0FBN0U5IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE4REU4NDhBNjAxRTExRTk5NEI5RUFCNDkzN0FBN0U5IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3MWIzMzZjNC0zOWFmLWIyNGEtYThhMC1hNDk1YTAyNDBlYzciIHN0UmVmOmRvY3VtZW50SUQ9IkQyMjBCNkNCRkJDNjBFQzJEM0JCREZBRTczRTk3OENEIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQAFBAQGRIZJxcXJzImHyYyLiYmJiYuPjU1NTU1PkRBQUFBQUFERERERERERERERERERERERERERERERERERERERAEVGRkgHCAmGBgmNiYgJjZENisrNkREREI1QkRERERERERERERERERERERERERERERERERERERERERERERERERE/8AAEQgDeAKAAwEiAAIRAQMRAf/EAEsAAQEAAAAAAAAAAAAAAAAAAAAGAQEAAAAAAAAAAAAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCM/9k='
+</script>
+
+<style lang="postcss" scoped>
+.result-img{
+	width:640rpx;
+	height:1236rpx;
+	position: absolute;
+	z-index: 2;
+}
+</style>
+```

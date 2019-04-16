@@ -54,6 +54,7 @@ class imgSynthesis{
       }
       return this.canvas.toDataURL();
     };
+  //文字设置 kongdejian
   setText(){
     // canvas 文字换行
     CanvasRenderingContext2D.prototype.wrapText = function(
@@ -132,5 +133,4 @@ class imgSynthesis{
     };
   }
 }
-
-export default new imgSynthesis();
+module.exports  = imgSynthesis;
