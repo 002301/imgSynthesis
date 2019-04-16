@@ -1,6 +1,6 @@
 {
   "name": "img-synthesis",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "src/imgSynthesis.js",
   "scripts": {
