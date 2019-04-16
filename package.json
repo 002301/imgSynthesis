@@ -1,6 +1,6 @@
 {
-  "name": "imgSynthesis",
-  "version": "1.0.0",
+  "name": "img-synthesis",
+  "version": "1.0.1",
   "description": "",
   "main": "src/imgSynthesis.js",
   "scripts": {
@@ -9,5 +9,5 @@
   "keywords": [],
   "author": "maning",
   "license": "ISC",
-  "repository":''
+  "repository":"https://github.com/002301/imgSynthesis.git"
 }
