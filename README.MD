@@ -19,7 +19,7 @@
 ```
 
 #### 参数示例
-
+```js
 例1：
   imgSynthesis.set({width:100,height:100,'msg':{text:'123',x:100,y:100,width:123,size:'60px'},'img':[{x:0,y0,src:'123.jpg'},{x:0,y0,src:'123.jpg'}]}).then((e)=>{
     let img = e;

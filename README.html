@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>参数示例</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h3 id="canvas%E5%9B%BE%E7%89%87%E5%90%88%E5%B9%B6%E7%B1%BB">canvas图片合并类</h3>
+<p>// 传入参数只有src是必填，其他都可以不填，定位默认0，0</p>
+<pre><code class="language-js"><div>  @width:<span class="hljs-built_in">Number</span> <span class="hljs-comment">//canvas宽度</span>
+  @height:<span class="hljs-built_in">Number</span> <span class="hljs-comment">//canvas高度</span>
+  @msg:object <span class="hljs-comment">//合成文本</span>
+      @text:<span class="hljs-built_in">String</span> 合成内容
+      @x:<span class="hljs-built_in">Number</span> <span class="hljs-comment">//x轴</span>
+      @y:<span class="hljs-built_in">Number</span> <span class="hljs-comment">//y轴</span>
+      @width:<span class="hljs-built_in">Number</span> <span class="hljs-comment">//文本的宽度</span>
+      @size:<span class="hljs-number">24</span> 文本字号
+      @color:<span class="hljs-string">'#000'</span> <span class="hljs-comment">//颜色</span>
+  @img:<span class="hljs-built_in">Array</span> <span class="hljs-comment">//合并图片数组</span>
+      @x:<span class="hljs-built_in">Number</span> <span class="hljs-comment">//图片x轴</span>
+      @y:<span class="hljs-built_in">Number</span> <span class="hljs-comment">//图片y轴</span>
+      @src:<span class="hljs-built_in">String</span> <span class="hljs-comment">//图片地址(必填)</span>
+</div></code></pre>
+<h4 id="%E5%8F%82%E6%95%B0%E7%A4%BA%E4%BE%8B">参数示例</h4>
+<p>例1：
+imgSynthesis.set({width:100,height:100,'msg':{text:'123',x:100,y:100,width:123,size:'60px'},'img':[{x:0,y0,src:'123.jpg'},{x:0,y0,src:'123.jpg'}]}).then((e)=&gt;{
+let img = e;
+});
+例2：
+imgSynthesis.set({
+'msg':{x:300,y:400,text:this.names},
+'img':[{src:imgAssets[bgr]},{y:656,src:er}]
+}).then((e)=&gt;{
+this.resultBase = e;
+})</p>
+<pre><code><div>
+#### vue 框架
+
+&gt; npm i img-synthesis
+```js
+//vue 框架示例
+&lt;template&gt;
+    &lt;div class=&quot;app&quot;&gt;
+        &lt;img :src=&quot;resultBase&quot; class=&quot;result-img&quot;&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import imgSynthesis from 'img-synthesis';
+    export default {
+        data(){
+            return{
+                names:'1234',
+                resultBase:null,
+            }
+        },
+        mounted(){
+            let ls =  new imgSynthesis();
+            ls.set({
+            'msg':{x:300,y:400,text:this.names},
+            'img':[{src:img}]
+            }).then((e)=&gt;{
+                this.resultBase = e;
+            })
+        },
+    };
+   let img ='data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAKAAD/4QNlaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0NSA3OS4xNjM0OTksIDIwMTgvMDgvMTMtMTY6NDA6MjIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkQyMjBCNkNCRkJDNjBFQzJEM0JCREZBRTczRTk3OENEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE4REU4NDhCNjAxRTExRTk5NEI5RUFCNDkzN0FBN0U5IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE4REU4NDhBNjAxRTExRTk5NEI5RUFCNDkzN0FBN0U5IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3MWIzMzZjNC0zOWFmLWIyNGEtYThhMC1hNDk1YTAyNDBlYzciIHN0UmVmOmRvY3VtZW50SUQ9IkQyMjBCNkNCRkJDNjBFQzJEM0JCREZBRTczRTk3OENEIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQAFBAQGRIZJxcXJzImHyYyLiYmJiYuPjU1NTU1PkRBQUFBQUFERERERERERERERERERERERERERERERERERERERAEVGRkgHCAmGBgmNiYgJjZENisrNkREREI1QkRERERERERERERERERERERERERERERERERERERERERERERERERE/8AAEQgDeAKAAwEiAAIRAQMRAf/EAEsAAQEAAAAAAAAAAAAAAAAAAAAGAQEAAAAAAAAAAAAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCM/9k='
+&lt;/script&gt;
+
+&lt;style lang=&quot;postcss&quot; scoped&gt;
+.result-img{
+	width:640px;
+	height:1236px;
+	position: absolute;
+	z-index: 2;
+}
+&lt;/style&gt;
+</div></code></pre>
+
+    </body>
+    </html>
