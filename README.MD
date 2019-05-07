@@ -16,6 +16,9 @@
       @x:Number //图片x轴
       @y:Number //图片y轴
       @src:String //图片地址(必填)
+```
+
+#### 参数示例
 
 例1：
   imgSynthesis.set({width:100,height:100,'msg':{text:'123',x:100,y:100,width:123,size:'60px'},'img':[{x:0,y0,src:'123.jpg'},{x:0,y0,src:'123.jpg'}]}).then((e)=>{
@@ -29,6 +32,10 @@ imgSynthesis.set({
         this.resultBase = e;
     })
 ```
+
+#### vue 框架
+
+> npm i img-synthesis
 ```js
 //vue 框架示例
 <template>
@@ -43,7 +50,7 @@ imgSynthesis.set({
         data(){
             return{
                 names:'1234',
-                resultBase:null
+                resultBase:null,
             }
         },
         mounted(){
@@ -61,8 +68,8 @@ imgSynthesis.set({
 
 <style lang="postcss" scoped>
 .result-img{
-	width:640rpx;
-	height:1236rpx;
+	width:640px;
+	height:1236px;
 	position: absolute;
 	z-index: 2;
 }
