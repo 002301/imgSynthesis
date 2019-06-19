@@ -4,7 +4,7 @@
 /*
   @width:Number //canvas宽度
   @height:Number //canvas高度
-  @msg:object //合成文本
+  @txt:object //合成文本
       @text:String 合成内容
       @x:Number //x轴
       @y:Number //y轴
@@ -22,9 +22,10 @@ class imgSynthesis{
     this.canvas = document.createElement("canvas");
     this.ctx = this.canvas.getContext('2d');
   }
-  async set({width=640,height=1236,msg=null,img}){
+  async set({width=640,height=1236,txt=null,img}){
     this.canvas.width = width;
     this.canvas.height = height;
+    console.log(txt);
       for(let i of img){ 
         let img_bg = new Image();
         img_bg.setAttribute('crossOrigin', 'anonymous');
@@ -32,7 +33,12 @@ class imgSynthesis{
           if(i.src){
             img_bg.onload = ()=>{
               let {x=0,y=0} = i;
-              this.ctx.drawImage(img_bg,x,y);
+              if(i.width!=undefined){
+                this.ctx.drawImage(img_bg,x,y,i.width,i.height);
+              }else{
+                this.ctx.drawImage(img_bg,x,y);
+              }
+              
               resolve();
             }
             img_bg.src=i.src;
@@ -42,9 +48,9 @@ class imgSynthesis{
           
         })
       }
-      if(msg){
-        this.setText();
-        let {text='',size='24px',width=156,color='#000000',x=0,y=0} = msg;
+      this.setText();
+      for(let i of txt){ 
+        let {text='',size='24px',width=156,color='#000000',x=0,y=0} = i;
         this.ctx.font = size+" bold Arial";
         this.ctx.textAlign = "center";
         this.ctx.textBaseline = "bottom";
