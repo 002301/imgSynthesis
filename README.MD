@@ -1,5 +1,15 @@
 
- ### canvas图片合并类
+
+### 1.0.4 版本
+
+添加文本竖向排版功能
+txt参数添加 writingMode 属性 传入参数 'td' 文字就会已竖排形式排版
+例如
+txt':[
+{x:558,y:755,text:rd,`writingMode:'td'`,color:'red',size:'18px'},
+]
+
+ # canvas图片合并类
 // 传入参数只有src是必填，其他都可以不填，定位默认0，0
 
 ```js
@@ -12,6 +22,7 @@
       @width:Number //文本的宽度
       @size:24 文本字号
       @color:'#000' //颜色
+      @writingMode //writingMode:'td' //文字竖排显示，默认横排
   @img:Array //合并图片数组
       @src:String //图片地址(必填)
       @x:Number //图片x轴
