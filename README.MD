@@ -1,5 +1,12 @@
 
 
+### 1.0.5 版本
+修改set函数为init
+添加addTxt()方法，可以添加一个文本；
+添加addImg()方法，可以添加一个图片；
+添加getImg()方法，可以得到合成的图片；
+
+
 ### 1.0.4 版本
 
 添加文本竖向排版功能
@@ -34,16 +41,25 @@ txt':[
 #### 参数示例
 ```js
 例1：
-  imgSynthesis.set({width:100,height:100,'txt':[{text:'123',x:100,y:100,width:123,size:'60px'},{text:'123',x:100,y:100}],'img':[{x:0,y0,src:'123.jpg'},{x:0,y0,src:'123.jpg'}]}).then((e)=>{
+  imgSynthesis.init({width:100,height:100,'txt':[{text:'123',x:100,y:100,width:123,size:'60px'},{text:'123',x:100,y:100}],'img':[{x:0,y0,src:'123.jpg'},{x:0,y0,src:'123.jpg'}]}).then((e)=>{
     let img = e;
   });
 例2：
-imgSynthesis.set({
+imgSynthesis.init({
     'msg':{x:300,y:400,text:this.names},
     'img':[{src:imgAssets[bgr]},{y:656,src:er}]
     }).then((e)=>{
         this.resultBase = e;
     })
+// 1.0.5 添加功能
+imgSynthesis.addTxt({text:'123',x:100,y:100}).then(()=>{
+    //添加完成
+    let img = imgSynthesis.getImg();
+});
+imgSynthesis.addImg({{x:0,y0,src:'123.jpg'}).then(()=>{
+    let img = imgSynthesis.getImg();
+});
+
 ```
 
 #### vue 框架
@@ -68,7 +84,7 @@ imgSynthesis.set({
         },
         mounted(){
             let ls =  new imgSynthesis();
-            ls.set({
+            ls.init({
             'txt':{x:300,y:400,text:this.names},
             'img':[{src:img}]
             }).then((e)=>{
