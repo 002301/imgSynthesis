@@ -23,60 +23,44 @@ class imgSynthesis {
     this.canvas = document.createElement("canvas");
     this.ctx = this.canvas.getContext('2d');
   }
+  /*
+  * 初始化函数 
+  * init({
+  *  width:750,height:1030,
+  *  txt:[{},{}],
+  *  img:[{},{}]
+  * })
+  * 
+  */
   async init({ width = 640, height = 1236,txt = null, img =null}) {
     // console.log(width, height)
     this.canvas.width = width;
     this.canvas.height = height;
     // console.log(txt);
+    //批量添加图片
     if(img!=null){
       for (let i of img) {
-        await new Promise((resolve, reject) => {
-          let img_bg = new Image();
-          img_bg.setAttribute('crossOrigin', 'anonymous');
-          if (i.src) {
-            img_bg.onload = () => {
-              let { x = 0, y = 0 } = i;
-              if (i.width != undefined) {
-                this.ctx.drawImage(img_bg, x, y, i.width, i.height);
-              } else {
-                this.ctx.drawImage(img_bg, x, y);
-              }
-  
-              resolve();
-            }
-            img_bg.src = i.src;
-          } else {
-            reject('缺少src参数');
-          }
-        })
+        await this.addImg(i);
       }
     }
-    
+    //批量添加文本
     if (txt != null) {
       for (let i of txt) {
         this.addTxt(i);
-
       }
-      return this.canvas.toDataURL();
+      return this
     }
 
   };
-  //添加文本
+  /*添加文本
+  * addTxt({text,size,width,height,color,x,y,writingMode,align})
+  * @text 必填其他随便
+  * @writingMode 显示方式，设置为td则竖排显示
+  */
   addTxt(i) {
     this.setText();
     let { text = null, size = '24px', width = 156, color = '#000000', x = 0, y = 0, writingMode = '', align = 'center' } = i;
-    if (text.length < 5) {
-      size = '35px';
-      y += 20;
-    } else if (text.length < 7) {
-      size = '30px';
-      y += 5;
-    } else if (text.length < 9) {
-
-    } else {
-      size = '20px';
-    }
-    this.ctx.font = size + " bold fz";
+    this.ctx.font = size;
     this.ctx.textAlign = align;
     this.ctx.textBaseline = "bottom";
     this.ctx.fillStyle = color;
@@ -87,23 +71,42 @@ class imgSynthesis {
       let MeasureWrapTextHeight = this.ctx.MeasureWrapTextHeight(text, width, size);
       this.ctx.wrapText(String(text), x, y, width, size);
     }
-    console.log('text', text)
-    // return this.canvas.toDataURL();
+    // console.log('text', text)
+    return this
   }
+  /* 画一个矩形 
+  * addRect({w,h,x,y,c})
+  * @c 矩形的颜色值
+  */
+  addRect(i){
+    return new Promise(res=>{
+      let {w = 10,h =10,x=0,y=0,c='#00ff00'} = i;
+      this.ctx.fillStyle = c;
+      this.ctx.fillRect(x, y, w, h);
+      res(this)
+    })
+  }
+  /*添加图片
+   *  addImg({src,x,y,algin})
+   *  @algin ='r' //右对齐
+   */
   addImg(i) {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       let img_bg = new Image();
       img_bg.setAttribute('crossOrigin', 'anonymous');
+      // console.log(i.src)
       if (i.src) {
         img_bg.onload = () => {
-          let { x = 0, y = 0 } = i;
+          let { x = 0, y = 0, algin = 'l' } = i;
+          if (algin == 'r') {
+            x = x - img_bg.width;
+          }
           if (i.width != undefined) {
             this.ctx.drawImage(img_bg, x, y, i.width, i.height);
           } else {
             this.ctx.drawImage(img_bg, x, y);
           }
-
-          resolve();
+          resolve(this);
         }
         img_bg.src = i.src;
       } else {
@@ -111,8 +114,16 @@ class imgSynthesis {
       }
     })
   }
-  getImg() {
-    return this.canvas.toDataURL();
+  //获取canvas图片内容
+  //@str 需要获取的图片类型默认"image/png" 可替换为"image/jpeg"或"image/webp"
+  // https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL
+  getImg(str='') {
+    if(str!=''){
+      return this.canvas.toDataURL(str);
+    }else{
+      return this.canvas.toDataURL();
+    }
+    
   }
   //文字设置 kongdejian
   setText() {
