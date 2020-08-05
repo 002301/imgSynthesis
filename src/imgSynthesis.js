@@ -1,50 +1,51 @@
-// canvas图片合并类
-// 传入参数只有src是必填，其他都可以不填，定位默认0，0
-// 20190328  maning
-/*
-  @width:Number //canvas宽度
-  @height:Number //canvas高度
-  @txt:object //合成文本
-      @text:String 合成内容
-      @x:Number //x轴
-      @y:Number //y轴
-      @width:Number //文本的宽度
-      @size:24 文本字号
-      @color:'#000' //颜色
-      @writingMode:'td' //文字竖排显示，默认横排
-  @img:Array //合并图片数组
-      @x:Number //图片x轴
-      @y:Number //图片y轴
-      @src:String //图片地址(必填)
+
+/** 
+ * canvas图片合并类
+ * 通过传入多个文本或者图片合成一张jpg或者png图片
+ * 
+ * @author  maning
+ * @time 20190328
 */
+
 
 class imgSynthesis {
   constructor() {
     this.canvas = document.createElement("canvas");
     this.ctx = this.canvas.getContext('2d');
   }
-  /*
-  * 初始化函数 
-  * init({
-  *  width:750,height:1030,
-  *  txt:[{},{}],
-  *  img:[{},{}]
-  * })
-  * 
-  */
-  async init({ width = 640, height = 1236,txt = null, img =null}) {
+  /**
+   * 初始化函数（异步函数）
+   * 设置宽、高、背景颜色、批量传入图片或者文字
+   * @param {object} obj - 传入一个对象
+   * @param {number} obj.w -图片宽度
+   * @param {number} obj.h -图片高度
+   * @param {color} obj.bg - 设置背景颜色 #ffffff
+   * @param {array} obj.txts - 传入的文字数组
+   * @param {array} obj.imgs - 传入的图片数组
+   * @returns {object} 返回 imgSynthesis 本身
+   * 
+   * 
+   * 
+   * 
+   */
+
+  async init({ w = 640, h = 1236, bg="", txts = null, imgs =null}) {
     // console.log(width, height)
-    this.canvas.width = width;
-    this.canvas.height = height;
+    this.canvas.width = w;
+    this.canvas.height = h;
+    if(bg!=""){
+      this.ctx.fillStyle = bg;
+      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    }
     // console.log(txt);
     //批量添加图片
-    if(img!=null){
+    if (imgs!=null){
       for (let i of img) {
         await this.addImg(i);
       }
     }
     //批量添加文本
-    if (txt != null) {
+    if (txts != null) {
       for (let i of txt) {
         this.addTxt(i);
       }
@@ -52,15 +53,22 @@ class imgSynthesis {
     }
 
   };
-  /*添加文本
-  * addTxt({text,size,width,height,color,x,y,writingMode,align})
-  * @text 必填其他随便
-  * @writingMode 显示方式，设置为td则竖排显示
+  /**添加文本
+  * @param {object} obj -  文本内容
+  * @param {string} obj.text - 内容（必填）
+  * @param {number} obj.x - 设置x轴位置
+  * @param {number} obj.y - 设置y轴位置
+  * @param {number} obj.w - 设置宽度
+  * @param {string} obj.size - 设置字号
+  * @param {string} obj.color - 颜色
+  * @param {number} obj.writingMode - 传入'td'会以竖排方式显示
+  * @param {string} obj.align - 对齐方式 left|center|right
+  * 
   */
   addTxt(i) {
     this.setText();
-    let { text = null, size = '24px', width = 156, color = '#000000', x = 0, y = 0, writingMode = '', align = 'center' } = i;
-    this.ctx.font = size;
+    let { x = 0, y = 0, w = 156, size = '24px',text = null,color = '#000000',writingMode = '', align = 'center' } = i;
+    this.ctx.font = size +"  Arial";
     this.ctx.textAlign = align;
     this.ctx.textBaseline = "bottom";
     this.ctx.fillStyle = color;
@@ -74,21 +82,32 @@ class imgSynthesis {
     // console.log('text', text)
     return this
   }
-  /* 画一个矩形 
-  * addRect({w,h,x,y,c})
-  * @c 矩形的颜色值
+  /** 画一个矩形 
+  * addRect({w,h,x,y,color})
+  * @param {object} obj -  参数
+  * @param {number} obj.x - 设置x轴位置
+  * @param {number} obj.y - 设置y轴位置
+  * @param {number} obj.w - 设置宽度
+  * @param {number} obj.h - 设置高度
+  * @param {string} obj.color - 颜色
   */
   addRect(i){
     return new Promise(res=>{
-      let {w = 10,h =10,x=0,y=0,c='#00ff00'} = i;
-      this.ctx.fillStyle = c;
+      let { x = 0, y = 0, w = 10, h = 10, color='#00ff00'} = i;
+      this.ctx.fillStyle = color;
       this.ctx.fillRect(x, y, w, h);
       res(this)
     })
   }
-  /*添加图片
-   *  addImg({src,x,y,algin})
-   *  @algin ='r' //右对齐
+  /**添加图片
+  *  addImg({src,x,y,algin})
+  * @param {object} obj -  参数
+  * @param {number} obj.src - 图片地址
+  * @param {number} obj.x - 设置x轴位置
+  * @param {number} obj.y - 设置y轴位置
+  * @param {string} obj.algin - 设置对齐方式 l|r
+  * @param {string} obj.w -  设置宽度
+  * @param {string} obj.h -  设置高度
    */
   addImg(i) {
     return new Promise((resolve, reject) => {
@@ -101,8 +120,8 @@ class imgSynthesis {
           if (algin == 'r') {
             x = x - img_bg.width;
           }
-          if (i.width != undefined) {
-            this.ctx.drawImage(img_bg, x, y, i.width, i.height);
+          if (i.w != undefined) {
+            this.ctx.drawImage(img_bg, x, y, i.w, i.h);
           } else {
             this.ctx.drawImage(img_bg, x, y);
           }
@@ -114,9 +133,13 @@ class imgSynthesis {
       }
     })
   }
-  //获取canvas图片内容
-  //@str 需要获取的图片类型默认"image/png" 可替换为"image/jpeg"或"image/webp"
-  // https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL
+  /**
+   * 获取canvas图片内容<br>
+   * https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL
+   * @param {string} str - 需要获取的图片类型默认"image/png" 或 "image/jpeg" 或 "image/webp"
+   */
+  //
+  // 
   getImg(str='') {
     if(str!=''){
       return this.canvas.toDataURL(str);
