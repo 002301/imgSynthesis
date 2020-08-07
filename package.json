@@ -1,6 +1,6 @@
 {
   "name": "img-synthesis",
-  "version": "1.0.4",
+  "version": "2.0",
   "description": "",
   "main": "src/imgSynthesis.js",
   "scripts": {
@@ -9,5 +9,11 @@
   "keywords": [],
   "author": "maning",
   "license": "ISC",
-  "repository":"https://github.com/002301/imgSynthesis.git"
+  "repository": "https://github.com/002301/imgSynthesis.git",
+  "dependencies": {
+    "jsdoc": "^3.6.5"
+  },
+  "devDependencies": {
+    "minami": "^1.2.3"
+  }
 }
