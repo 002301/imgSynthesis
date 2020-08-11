@@ -9,7 +9,6 @@
  * 
 */
 
-
 class imgSynthesis {
   /**
    * 创建合成图片
@@ -84,7 +83,7 @@ class imgSynthesis {
   * @param {number} [y=0] - 设置y轴位置
   * @param {object} [opts] - 参数
   * @param {number} [opts.w = 156] - 设置宽度
-  * @param {number} [opts.w = 156] - 设置宽度
+  * @param {number} [opts.h = 50] - 设置高度
   * @param {string} [opts.size = '24px'] - 设置字号
   * @param {string} [opts.color='#ffffff'] - 颜色
   * @param {number} opts.writingMode - 传入'td'会以竖排方式显示
@@ -99,19 +98,19 @@ class imgSynthesis {
   addTxt(text = "文本",x = 0, y = 0,opts={}) {
     return new Promise(res =>{
       this.setText();
-      let {  w = 156, size = '24px',color = '#ffffff',writingMode = '', align = 'left' } = opts;
+      let {  w = 156, h=0, size = '24px',color = '#ffffff',writingMode = '', align = 'left' } = opts;
       this.ctx.font = size +"  Arial";
       this.ctx.textAlign = align;
       this.ctx.textBaseline = "top";
       this.ctx.fillStyle = color;
-      // console.log(writingMode);
       if (writingMode == 'td') {
         this.ctx.fillTextVertical(String(text), x, y);
       } else {
-        let MeasureWrapTextHeight = this.ctx.MeasureWrapTextHeight(text, w, size);
-        this.ctx.wrapText(String(text), x, y, w, size);
+        if(h==0){
+          h = parseInt(size.replace(/px/,""))
+        }
+        this.ctx.wrapText(String(text), x, y, w,h);
       }
-      console.log('text', text)
       res(this)
     })
     
@@ -230,43 +229,6 @@ class imgSynthesis {
       }
       context.fillText(line, x, y);
     };
-    // 测量文字高度
-    CanvasRenderingContext2D.prototype.MeasureWrapTextHeight = function (
-      text,
-      maxWidth,
-      lineHeight
-    ) {
-      if (typeof text != "string") {
-        return;
-      }
-      const context = this;
-      const canvas = context.canvas;
-      if (typeof maxWidth == "undefined") {
-        maxWidth = (canvas && canvas.width) || 300;
-      }
-      if (typeof lineHeight == "undefined") {
-        lineHeight =
-          (canvas && parseInt(window.getComputedStyle(canvas).lineHeight)) ||
-          parseInt(window.getComputedStyle(document.body).lineHeight);
-      }
-      let strHeight = lineHeight;
-
-      // 字符分隔为数组
-      let arrText = text.split("");
-      let line = "";
-      for (let n = 0; n < arrText.length; n++) {
-        const testLine = line + arrText[n];
-        const metrics = context.measureText(testLine);
-        const testWidth = metrics.width;
-        if (testWidth > maxWidth && n > 0) {
-          line = arrText[n];
-          strHeight += lineHeight;
-        } else {
-          line = testLine;
-        }
-      }
-      return strHeight;
-    };
 
 
 
@@ -330,4 +292,4 @@ class imgSynthesis {
     };
   }
 }
-export default imgSynthesis
+export default imgSynthesis ;
