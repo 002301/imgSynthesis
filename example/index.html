@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test AIP</title>
+</head>
+<body>
+    <div class="img"></div>
+
+<script  type="module">
+    import imgSynthesis from '../src/imgSynthesis.min.js';
+    let is = new imgSynthesis(400,400,"#0381ff");
+    is.addTxt("有人吗",100,100)
+    console.log(is.getImg())
+    let img = new Image();
+    img.src = is.getImg();
+    document.querySelector(".img").appendChild(img);
+</script>
+</body>
+</html>
