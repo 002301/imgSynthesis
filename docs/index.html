@@ -45,7 +45,9 @@
         imgSynthesis
         </h2>
         
-            <div class="class-description"><p>通过传入多个文本或者图片合成一张jpg或者png图片</p></div>
+            <div class="class-description"><p>通过传入多个文本或者图片合成一张jpg或者png图片</p>
+            <p><a href="./example/index.html">在线例子</a></p>
+            </div>
         
     
 </header>
@@ -298,7 +300,9 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>let is = new imgSynthesis(100,100,"#ffffff");let img = new images();img.scr = is.getImg();</code></pre>
+    <pre class="prettyprint"><code>let is = new imgSynthesis(100,100,"#ffffff");
+let img = new images();
+img.scr = is.getImg();</code></pre>
 
 </div>
 
@@ -928,7 +932,11 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>is.addImgs([ ["测试1",10,10,{w:50,color:"#000000"}], ["测试2",10,40,{size:"30px",writingMode:"td"}], ["测试3",10,70,{size:"30px",w:300,algin:"center"}],])</code></pre>
+    <pre class="prettyprint"><code>is.addImgs([
+ ["测试1",10,10,{w:50,color:"#000000"}],
+ ["测试2",10,40,{size:"30px",writingMode:"td"}],
+ ["测试3",10,70,{size:"30px",w:300,algin:"center"}],
+])</code></pre>
 
 </div>
 
@@ -1200,7 +1208,8 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>//设置一个宽高100的纯色方块is.addRect(100,100,10,10)</code></pre>
+    <pre class="prettyprint"><code>//设置一个宽高100的纯色方块
+is.addRect(100,100,10,10)</code></pre>
 
 </div>
 
@@ -1763,7 +1772,10 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>//添加文本is.addTxt("文本")//设置大小、颜色、对齐方式等等is.addTxt("文本1",100,100,{size:"30px",color:"#e3e3e3",align:"center",w:400})</code></pre>
+    <pre class="prettyprint"><code>//添加文本
+is.addTxt("文本")
+//设置大小、颜色、对齐方式等等
+is.addTxt("文本1",100,100,{size:"30px",color:"#e3e3e3",align:"center",w:400})</code></pre>
 
 </div>
 
@@ -2105,7 +2117,8 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL</p>
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>//获取合成的图片is.getImg("image/jpeg")</code></pre>
+    <pre class="prettyprint"><code>//获取合成的图片
+is.getImg("image/jpeg")</code></pre>
 
 </div>
 

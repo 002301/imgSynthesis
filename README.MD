@@ -30,7 +30,7 @@ await ls.addTxt('测试测试测试测试测试测试测试测试',120,120,{h:50
 
 ```
 添加了说明文档
-[说明文档](./docs/imgSynthesis.html)
+[说明文档](https://002301.github.io/imgSynthesis/)
 
 添加了测试用例
 [测试用例](./example/index.html)

@@ -1,6 +1,6 @@
 {
   "name": "img-synthesis",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "",
   "main": "src/imgSynthesis.js",
   "scripts": {
@@ -14,6 +14,8 @@
   "dependencies": {
     
   },
+  "publishConfig": { "registry": "https://www.npmjs.com/package/img-synthesis/" },
+  
   "devDependencies": {
     "jsdoc": "^3.6.5",
     "minami": "^1.2.3",
