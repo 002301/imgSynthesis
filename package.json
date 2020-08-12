@@ -11,10 +11,7 @@
   "author": "maning",
   "license": "ISC",
   "repository": "https://github.com/002301/imgSynthesis.git",
-  "dependencies": {
-    
-  },
-  "publishConfig": { "registry": "https://www.npmjs.com/package/img-synthesis/" },
+  "dependencies": {},
   
   "devDependencies": {
     "jsdoc": "^3.6.5",
