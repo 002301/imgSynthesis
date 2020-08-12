@@ -1,3 +1,4 @@
+[![NPM](https://nodei.co/npm/img-synthesis.png?downloads=true)](https://www.npmjs.com/package/img-synthesis)
 ### 2.0.1
 
 修改了文本自动换行功能
@@ -30,7 +31,7 @@ await ls.addTxt('测试测试测试测试测试测试测试测试',120,120,{h:50
 
 ```
 添加了说明文档
-[说明文档](https://002301.github.io/imgSynthesis/)
+[说明文档](./docs/index.html)
 
 添加了测试用例
 [测试用例](./example/index.html)
