@@ -1,17 +1,21 @@
 {
   "name": "img-synthesis",
-  "version": "1.0.6",
+  "version": "2.0.4",
   "description": "",
   "main": "src/imgSynthesis.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "jsdoc": "./node_modules/.bin/jsdoc src/imgSynthesis.js"
+    "server": "live-server ./",
+    "doc": "jsdoc -c conf.json"
   },
   "keywords": [],
-  "author": "maning",
+  "author": "airmni@163.com",
   "license": "ISC",
   "repository": "https://github.com/002301/imgSynthesis.git",
+  "dependencies": {},
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "jsdoc": "^3.6.5",
+    "jsdoc-to-markdown": "^6.0.1",
+    "live-server": "",
+    "minami": "^1.2.3"
   }
 }

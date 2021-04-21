@@ -1,0 +1,193 @@
+/*基本样式------------------*/
+body,form,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,header,menu,footer,section,iframe,video,article,button{margin:0;padding:0;}
+/*html5*/
+article,aside,dialog,section,nav,figure,menu{display:block}
+div,ul,dl,dt,dd,p,h1,h2,h3,h4,h5,h6,span,menu,footer,section,video,article,button,a{zoom:1;}
+body{background:#FFF;text-align:center;}
+html{height:100%;font-size:12px;}
+body,td,th,.wrapper{color:#fff;line-height:1.75em;}
+input,select{vertical-align:middle;line-height:normal;font-size:1em;color:#999999;}
+textarea{font-size:1em;line-height:1.75em;} 
+a{outline:0;cursor:pointer;}
+a:link,a:visited,a:active{color:#fff;text-decoration:none;}
+a:hover{color:#fff;text-decoration:none;}
+a.current:link,a.current:visited,a.current:active{color:#2B536C;}
+a.current:hover{color:#fff;}
+a:hover img{opacity:0.8;filter:alpha(opacity=80);}
+img{border:0;display: block;}
+p{word-break:break-all;}
+.hidden{display:none;}
+.clear{clear:both;height:0;font-size:0;line-height:0;visibility:hidden;} 
+.fl{position: relative;float:left;}
+.fr{position: relative;float:right;}
+input {
+   outline: none;
+   border-radius: 0;
+   -webkit-appearance: none;
+   }
+   /* 屏蔽文本框高亮 */
+   textarea {
+   outline: none;
+ } 
+ :root{
+   --shadow:0px 10px 30px rgba(0,0,0,0.2);
+   --txt:#132e5a;
+ }
+body{
+  width: 100%;height: 100%;
+  /* overflow:hidden; */
+}
+#main{
+  width:950px; margin: 0 auto;
+  position: relative;
+  top:10px;
+}
+.conterCont{position: relative;} 
+header{
+	position: relative;
+  height: 100px;
+  border-radius: 10px;
+	/* clip-path:circle(10px); */
+  box-shadow: var(--shadow);
+  background: url(../images/clog_bg.jpg);
+	overflow: hidden;
+}
+nav{
+  background:#f06874;
+}
+nav ul{list-style: none;overflow:hidden;}
+nav ul li {float: left;margin-left: 5px;}
+
+footer{background:#f06874;height: 100px;}
+
+@media screen and (max-width: 750px) {
+  #main{
+    width:750px;
+    overflow-x:hidden;
+  }
+	.drowCont{
+		height: 350px;
+	}
+}
+@media screen and (min-width: 750px) and(max-width:1024px) {
+	.drowCont{
+		height: 350px;
+	}
+}
+@media screen and (min-width: 1024px) {
+	#content{width:1024px;margin:0 auto;}
+}
+
+
+	.item{
+		position: relative;
+		border-radius: 10px;
+		overflow: hidden;
+		margin:10px 0;
+		padding:10px;
+		background:#fff;
+		box-shadow:var(--shadow);
+		}
+	h1{
+		font-size: 60px;
+		height: 60px;
+		line-height: 60px;
+		padding:8px;
+		font-weight:700;
+    font-family: Oswald;
+	}
+	.code{
+		/* position: absolute; */
+		width: 100%;
+		text-align: left;
+		border:1px solid #fff;
+		border-radius:10px;
+		background:#2d2a3b;
+		margin-top:10px;
+	}
+	.code>pre{
+		text-align: left;
+		margin:0 10px;
+	}
+
+
+	.drow{
+		position: absolute;
+		width:100%;
+		height: 100%;
+		/* margin:10px; */
+		background-clip: padding-box;
+	}
+	.title{
+		text-align: center;
+		line-height: 30px;
+		position: relative;
+	}
+	.title>.point{
+		width: 10px;
+		height: 10px;
+		top:25%;
+		left:5px;
+		position: absolute;
+		border-radius: 5px;
+		background:#fd504b;
+	}
+	.title>.point::before{
+		content:" ";
+		width: 10px;
+		height: 10px;
+		position: absolute;
+		border-radius: 5px;
+		background:#fcb538;
+		left:15px;
+	}
+	.title>.point::after{
+		content:" ";
+		width: 10px;
+		height: 10px;
+		position: absolute;
+		border-radius: 5px;
+		background:#2bc640;
+		left:30px;
+	}
+	.drowCont{
+		position: relative;
+		width:100%;
+		height: 300px;
+	}
+	.scratch{
+		position: relative;
+		width: 535px;
+		height: 310px;
+		margin:10px 10px 20px 10px;
+	}
+	.drow>canvas,.scratch>canvas{
+			position: absolute;
+			z-index: 1;
+			left:0;
+			top:0;
+			/* border:5px solid #8c5d4f; */
+		}
+		.scratchTxt{
+			position: absolute;
+			height:320px;
+			width: 100%;
+			line-height: 320px;
+			font-size: 100px;
+			text-align:center;
+			z-index: 0;
+			background:#717171;
+		}
+		#gitHub{
+			position: absolute;
+			right:0px;
+		}
+		#npm{
+			position: absolute;
+			left:10px;
+			bottom:5px;
+			
+		}
+		#npm>img{
+				width: 50px;
+			}
