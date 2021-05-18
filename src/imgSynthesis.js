@@ -41,7 +41,8 @@ class imgSynthesis {
    * @example
    * 
    * is.addImgs([
-   *  ["测试1",10,10,{w:50,color:"#000000"}],
+   *  [url,0,0,{w:50,h:30}],
+	 *  [url,200,50, { w: 50, h: 30 }]
    * ])
    */
 
@@ -63,7 +64,7 @@ class imgSynthesis {
    * 
    * @example
    * 
-   * is.addImgs([['千山鸟飞绝',0,400],['万径人踪灭',0,450]])
+   * is.addTxts([['千山鸟飞绝',0,400],['万径人踪灭',0,450]])
    */
   async addTxts(txts) {
     //批量添加文本
@@ -189,11 +190,16 @@ class imgSynthesis {
     }
     
   }
-  /*
+  /** 
   * 添加头像
-  * @param {string}[src='url'] - 图片地址
-  * @param {number} [width] - 图片宽度
-  * */
+  * @param {string}[src] - 图片地址
+  * @param {number} [width=50] - 图片宽度
+  * @param {number} [x=0] - x位置
+  * @param {number} [y=0] - y位置
+  * @example
+  * //获取合成的图片
+  * is.addHead(hdurl,50,10,10)
+  */
   addHead(src,w=50,x=0,y=0){
     console.log('head');
     return new Promise((resolve, reject) => {
