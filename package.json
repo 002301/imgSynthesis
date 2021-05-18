@@ -1,21 +1,22 @@
 {
   "name": "img-synthesis",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "",
   "main": "src/imgSynthesis.js",
   "scripts": {
     "server": "live-server ./",
-    "doc": "jsdoc -c conf.json"
+    "doc": "jsdoc -c conf.json",
+    "build": "uglifyjs src/imgSynthesis.js -o src/imgSynthesis.min.js"
   },
   "keywords": [],
   "author": "airmni@163.com",
   "license": "ISC",
   "repository": "https://github.com/002301/imgSynthesis.git",
-  "dependencies": {},
   "devDependencies": {
     "jsdoc": "^3.6.5",
     "jsdoc-to-markdown": "^6.0.1",
     "live-server": "",
-    "minami": "^1.2.3"
+    "minami": "^1.2.3",
+    "uglify-es": "^3.3.9"
   }
 }

@@ -1,5 +1,9 @@
 [![NPM](https://nodei.co/npm/img-synthesis.png?downloads=true)](https://www.npmjs.com/package/img-synthesis)
 >npm i img-synthesis
+### 2.0.6
+添加头像
+await is.addHead(src,50,10,10);
+...
 ### 2.0.1
 
 修改了文本自动换行功能

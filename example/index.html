@@ -47,13 +47,16 @@
 			<div class="item">
 				<div class="drowCont"><div class="drow"></div></div>
 				<div class="code">
-					<div class="title"><div class="point"></div><h2>创建纯色图片</h2></div>
+					<div class="title"><div class="point"></div><h2>添加头像</h2></div>
 						<pre>
 import IS from '../src/imgSynthesis.min.js';
 let is = new IS(950,300,"#0381ff");
-let img = new Image();
-img.src = is.getImg();
-document.querySelector(".drow").appendChild(img);
+//addHead(图片,宽度,x,y)
+is.addHead(hd,50,10,10).then(e=>{
+	let img = new Image();
+	img.src = is.getImg();
+	document.querySelector(".drow").appendChild(img);
+});
 						</pre>
 					
 				</div>
@@ -64,23 +67,23 @@ document.querySelector(".drow").appendChild(img);
 					<div class="title"><div class="point"></div><h2>添加文字</h2></div>
 						<pre>
 import IS from '../src/imgSynthesis.min.js';
-	let is2 = new IS(950,300, "#0381ff");
-	is2.addTxt("有人吗？",100, 100,{
-		w:256, h:0,//宽高
-		size:'44px',//文字大小
-		color:'#ffffff',//文字颜色
-		writingMode:'td',//竖排显示
-		align:'center' //对齐方式
-	});
-	//多文本添加
-	is2.addTxts([['千山鸟飞绝', 100, 50],['万径人踪灭', 200, 150]]).then(e=>{
-	let img2 = new Image();
-	img2.src = is2.getImg();
-	document.querySelector(".drow2").appendChild(img2);
-	})
-	let img2 = new Image();
-	img2.src = is2.getImg();
-	document.querySelector(".drow2").appendChild(img2);
+let is2 = new IS(950,300, "#0381ff");
+is2.addTxt("有人吗？",100, 100,{
+	w:256, h:0,//宽高
+	size:'44px',//文字大小
+	color:'#ffffff',//文字颜色
+	writingMode:'td',//竖排显示
+	align:'center' //对齐方式
+});
+//多文本添加
+is2.addTxts([['千山鸟飞绝', 100, 50],['万径人踪灭', 200, 150]]).then(e=>{
+let img2 = new Image();
+img2.src = is2.getImg();
+document.querySelector(".drow2").appendChild(img2);
+})
+let img2 = new Image();
+img2.src = is2.getImg();
+document.querySelector(".drow2").appendChild(img2);
 						</pre>
 					
 				</div>
@@ -115,10 +118,13 @@ is3.addImg(url,100,100).then(e=>{
 </div>
 <script type="module">
 	import IS from '../src/imgSynthesis.js';
+	let hd = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAB8CAMAAAAvgZn6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAb1BMVEUAAADORUXdgH7bdnbRTUzYbW3TVFPZbWz+/f3ijY378/Ppra312dnpqan//v7yy8vuu7r99/f67+/SUU/34+Pwysrhjo7UWVjzzs7XZGTvv7/54+Pqra3ORUTlnJrfh4fLODjLNzfINzfLODf///8xijbnAAAAI3RSTlMA8MzP6dPj1OfH1MHDwfHAv9jP58fBxuDB2L/GwPHDyEldHI9hLNYAAAABYktHRCS0BvmZAAAAB3RJTUUH4QgJAiQLOQqKjAAAAWVJREFUeNrt3clSwkAUhtEwGMARxBFFUHn/Z2Tfd0GIN1SsnG/d/Sd1smRB9as/VSEACBAgQAEECBCgAAIECFAAAQIcMOBonNIkDE9zhq/CcD2+WKMGgLNDSvMwvMgZvg7DN4eLNQMIECBAgAABAgQIECBAgAABAgQIECDAMwFv78rucwAfwnAS4LLcXYYjq/Dsx84AF+HWPAcwvmAS4Lq8tA5HnsLwM0CAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIMB/D/jyWgbwLMAGAQQIECBAgAABAgQIECBAgAABAgQIEGBvAOu3072HW5vyyKYV4MfpZ3+G4UmDN96Wl7bhyFcY3oUzdQPAzmr3m0jfAwgQIECAAAECBAgQIECAAAECBAgQ4IAA9x31HR41bfXHd/ueV3XVT9YXHmoAAQIECBAgQIAAAQIECBAgQIAAAQLsXUeZgqjubEflUgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wOC0wOVQwMjozNjoxMSswMDowMFUH2vMAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDgtMDlUMDI6MzY6MTErMDA6MDAkWmJPAAAAAElFTkSuQmCC'
 	let is = new IS(950,300,"#0381ff");
-	let img = new Image();
-		img.src = is.getImg();
-		document.querySelector(".drow").appendChild(img);
+	is.addHead(hd,50,10,10).then(e=>{
+			let img = new Image();
+			img.src = is.getImg();
+			document.querySelector(".drow").appendChild(img);
+	});
 
 	let is2 = new IS(950,300, "#0381ff");
 	is2.addTxt("有人吗？",425, 100,{
@@ -145,7 +151,6 @@ is3.addImg(url,100,100).then(e=>{
 				document.querySelector(".drow3").appendChild(img3);
 			})
 		})
-			
 </script>
 </body>
 </html>

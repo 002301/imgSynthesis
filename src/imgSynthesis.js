@@ -189,6 +189,37 @@ class imgSynthesis {
     }
     
   }
+  /*
+  * 添加头像
+  * @param {string}[src='url'] - 图片地址
+  * @param {number} [width] - 图片宽度
+  * */
+  addHead(src,w=50,x=0,y=0){
+    console.log('head');
+    return new Promise((resolve, reject) => {
+      let canvas = document.createElement("canvas");
+      let ctx = canvas.getContext('2d');
+      canvas.width = w;
+      canvas.height = w;
+      
+      let img_bg = new Image();
+      img_bg.setAttribute('crossOrigin', 'anonymous');
+      // console.log(src)
+      if (src) {
+        img_bg.onload = () => {
+          ctx.drawImage(img_bg,0,0,w,w);
+          ctx.globalCompositeOperation = "destination-in";
+          ctx.fillStyle = "#ffffff";
+          ctx.arc(w / 2, w / 2, w / 2, 0, Math.PI * 2, true);
+          ctx.fill();
+          this.ctx.drawImage(canvas, x, y);
+          resolve(this);
+        }
+        img_bg.src = src;
+      }
+    })
+  }
+
   //文字设置 kongdejian
   setText() {
     // canvas 文字换行
